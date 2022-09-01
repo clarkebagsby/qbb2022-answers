@@ -14,4 +14,10 @@
 ----
 4c. search for poppulation, cut to just that list of pop., sort them, then filter
 ----
-5. pull ouut HG00100
+5c. 9514
+----
+5d. 34
+----
+5e. 132
+----
+5f. To extract afr values, you would have to cut the header and using the amount of occurences you can cut out AFR. 
