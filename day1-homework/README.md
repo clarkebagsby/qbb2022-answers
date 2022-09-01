@@ -1,9 +1,9 @@
 # QBB2022 - Day 1 - Homework Exercises Submission
 Exercise 1:
 
-error message was awk illegal field
+A. error message was `awk illegal field`
 
-output = 
+B. output = 
 Considering  A
  354 C
 1315 G
