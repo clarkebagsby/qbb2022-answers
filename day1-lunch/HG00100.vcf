@@ -1,4 +1,4 @@
-##fileformat=VCFv4.3
+f man##fileformat=VCFv4.3
 ##FILTER=<ID=PASS,Description="All filters passed">
 ##fileDate=31052018_15h52m43s
 ##source=IGSRpipeline
