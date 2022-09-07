@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+import sys 
+import numpy as np
+import matplotlib.pyplot as plt
+
+sorted_data = np.genfromtxt("metadata_plink.txt", dtype = None, encoding = None, names =['sample', "population", "sup_pop", "sex", "sample", "PC1", "PC2", "PC3"])
+print(sorted_data)
+
+# what unique values are there for some metadata?
+# how to get unique vlaues
+# numpy.unique
+# want to plot PC
+
+
+
+#numpy.unique(sorted_data["population"], return_index=False, return_inverse=False, return_counts=False, axis=None, *, equal_nan=True
+
+gender_data = np.unique(sorted_data["sex"]) #returns unique data as a list 
+pop_data = np.unique(sorted_data["population"])
+sup_data = np.unique(sorted_data["sup_pop"])
+
+
+x_g= []
+y_g= []
+fig, ax = plt.subplots()
+for i, f in enumerate(gender_data):# want this to plot the unique values for sexx, population, sup_pop
+   pc1g = np.where(sorted_data['sex'] == f)
+   x_g.append(sorted_data['PC1'][pc1g])
+   y_g.append(sorted_data['PC2'][pc1g])
+   ax.scatter(x_g[i], y_g[i], label = f)
+ax.set_xlabel("PC1")
+ax.set_ylabel("PC2")
+ax.set_title("Principle Component Analysis of Gender") #add title and legend
+ax.legend()
+plt.show()
+plt.savefig("ex3_a.png")
+plt.close(fig)
+
+x_p=[]
+y_p=[]
+fig, ax = plt.subplots()
+for i, g in enumerate(pop_data):# want this to plot the unique values for sexx, population, sup_pop
+   pc1p = np.where(sorted_data['population'] == g)
+   x_p.append(sorted_data['PC1'][pc1p])
+   y_p.append(sorted_data['PC2'][pc1p])
+   ax.scatter(x_p[i], y_p[i], label = g)
+ax.set_xlabel("PC1")
+ax.set_ylabel("PC2")
+ax.set_title("Principle Component Analysis of Population")
+ax.legend()
+plt.show()
+plt.savefig("ex3_b.png")
+plt.close(fig)
+
+x_s=[]
+y_s=[]
+fig, ax = plt.subplots()
+for i, h in enumerate(sup_data):# want this to plot the unique values for sexx, population, sup_pop
+   pc1s = np.where(sorted_data['sup_pop'] == h)
+   x_s.append(sorted_data['PC1'][pc1s])
+   y_s.append(sorted_data['PC2'][pc1s])
+   ax.scatter(x_s[i], y_s[i], label = h)  
+ax.set_xlabel("PC1")
+ax.set_ylabel("PC2")
+ax.set_title("Principle Component Analysis of Sub Population")
+ax.legend()
+plt.show()
+plt.savefig("ex3_c.png")
+plt.close(fig)
