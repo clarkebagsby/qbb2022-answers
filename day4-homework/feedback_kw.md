@@ -4,6 +4,8 @@
 
 Great code! Very well done!
 
+(I would recommend using the `vmin`, `vmax`, `xticklabels`, and `yticklabels` arguments/options within the `sns.heatmap()` function)
+
 ## Homework Exercise C
 
 The heatmap that was turned in is blank and only represents the experiment without multiple hypothesis testing correction. You want two heatmaps -- one with multiple hypothesis testing correction and one without
