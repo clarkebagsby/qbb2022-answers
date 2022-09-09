@@ -29,3 +29,29 @@ done
 echo "--- Creating exons.$CHR.bed"
 grep "lncRNA" $CHR.gtf | awk 'BEGIN {OFS="\t"}{if ($3=="exon"){print $1, $4-1, $5}}' > exons.$CHR.bed
 
+graphs have been uploaded to github
+
+Exercise 3:
+ SYNOPSIS
+     bxlab/cmdb-plot-vcfs -- [file1] [file2]
+
+ USAGE
+     bash do_all.sh <file> ...
+
+     <file>   need to file in a vcf or gtf
+
+ DESCRIPTION
+     1. Create .bed files for features of interest
+         - Run subset_regions.sh Bash script
+         - Use grep to ... SYNOPSIS
+     bxlab/cmdb-plot-vcfs -- ...
+
+ USAGE
+     bash do_all.sh <thing1> ...
+
+     <thing1>   ...
+
+ DESCRIPTION
+     1. Create .bed files for features of interest
+         - Run subset_regions.sh Bash script
+         - Use grep to ...
