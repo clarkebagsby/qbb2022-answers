@@ -42,16 +42,11 @@ Exercise 3:
 
  DESCRIPTION
      1. Create .bed files for features of interest
-         - Run subset_regions.sh Bash script
-         - Use grep to ... SYNOPSIS
+         - Run subset_regions.sh Bash script on GTF file
+         - Use grep to find the length of overlap between the VCF and the bed of GTF file
+	 2. .bed file has the info from vcf file changed to the chromosome positions
+	 	 - 
+		 -
+	 3. 
      bxlab/cmdb-plot-vcfs -- ...
 
- USAGE
-     bash do_all.sh <thing1> ...
-
-     <thing1>   ...
-
- DESCRIPTION
-     1. Create .bed files for features of interest
-         - Run subset_regions.sh Bash script
-         - Use grep to ...
