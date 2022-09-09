@@ -1,4 +1,4 @@
-#QBB-Lunch Exercises
+#QBB-Day 4-Lunch Exercises
 
 Exercise 1:
 
@@ -36,9 +36,9 @@ Exercise 3:
      bxlab/cmdb-plot-vcfs -- [file1] [file2]
 
  USAGE
-     bash do_all.sh <file> ...
+     bash do_all.sh <vcf_file> <gtf_file> ...
 
-     <file>   need to file in a vcf or gtf
+     <file>   need to file in a vcf and gtf
 
  DESCRIPTION
      1. Create .bed files for features of interest
