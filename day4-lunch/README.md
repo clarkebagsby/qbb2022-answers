@@ -28,9 +28,15 @@ done
 
 echo "--- Creating exons.$CHR.bed"
 grep "lncRNA" $CHR.gtf | awk 'BEGIN {OFS="\t"}{if ($3=="exon"){print $1, $4-1, $5}}' > exons.$CHR.bed
+---
 
 graphs have been uploaded to github
+--- 
 
+trends noticed are there is uneven distributioon of the exons --> showing how some parts of the exon might not be BP regiion
+							even dist. of processed_pseudogenes_ --> sgenetiic variability of the gene read in that region
+							right-skewed for lncRNA --> suggesting low allels there 
+---
 Exercise 3:
  SYNOPSIS
      bxlab/cmdb-plot-vcfs -- [file1] [file2]
@@ -43,10 +49,10 @@ Exercise 3:
  DESCRIPTION
      1. Create .bed files for features of interest
          - Run subset_regions.sh Bash script on GTF file
-         - Use grep to find the length of overlap between the VCF and the bed of GTF file
-	 2. .bed file has the info from vcf file changed to the chromosome positions
-	 	 - 
-		 -
-	 3. 
-     bxlab/cmdb-plot-vcfs -- ...
+         - Use grep to find the length of BP overlap between the VCF and the bed of GTF file
+	 2. vcf file is changed for feature of interest based upon whats in .bed()
+	 	 - bedtools sort & merge of the .bed() file 
+		 - create new vcf with new feature of intrest
+	 3. Plot the feature of interest with values from .vcf
+	     - Run python plot_vcf_ac.py on feature
 
