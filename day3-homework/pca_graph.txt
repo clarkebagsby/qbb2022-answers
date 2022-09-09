@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 sorted_data = np.genfromtxt("metadata_plink.txt", dtype = None, encoding = None, names =['sample', "population", "sup_pop", "sex", "sample", "PC1", "PC2", "PC3"])
-print(sorted_data)
 
 # what unique values are there for some metadata?
 # how to get unique vlaues
@@ -32,7 +31,6 @@ ax.set_xlabel("PC1")
 ax.set_ylabel("PC2")
 ax.set_title("Principle Component Analysis of Gender") #add title and legend
 ax.legend()
-plt.show()
 plt.savefig("ex3_a.png")
 plt.close(fig)
 
@@ -48,9 +46,8 @@ ax.set_xlabel("PC1")
 ax.set_ylabel("PC2")
 ax.set_title("Principle Component Analysis of Population")
 ax.legend()
-plt.show()
 plt.savefig("ex3_b.png")
-plt.close(fig)
+plt.close("ex3_b.png")
 
 x_s=[]
 y_s=[]
@@ -64,6 +61,5 @@ ax.set_xlabel("PC1")
 ax.set_ylabel("PC2")
 ax.set_title("Principle Component Analysis of Sub Population")
 ax.legend()
-plt.show()
 plt.savefig("ex3_c.png")
 plt.close(fig)
