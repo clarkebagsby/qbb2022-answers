@@ -101,20 +101,28 @@ def run_experiment(tosses, probs, n_iters = 100, seed = 389, correct_the_pvalues
             heatmapdata[j][i]=power
     return heatmapdata
 
-
-        
+a = numpy.array([10, 50, 100, 250, 500, 1000])
+b = numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1]
 # power1 = run_experiment(0.6, 500, correct_the_pvalues = True)
-# power2 = run_experiment(0.95, 10, correct_the_pvalues = True)
-power2b = run_experiment(numpy.array([10, 50, 100, 250, 500, 1000]), numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1])
+power2 = run_experiment(a, b, correct_the_pvalues = True)
+power2b = run_experiment(a, b) 
 
-#
+#power2b = run_experiment(numpy.array([10, 50, 100, 250, 500, 1000]), numpy.around(numpy.arange(0.55, 1.05, 0.05), decimals=2)[::-1])
+
 fig, ax = plt.subplots()
 # ax= sns.heatmap(power2b)
 sns.heatmap(power2b, cmap="YlGnBu", ax=ax)
 ax.set_xlabel("probability")
 ax.set_ylabel("tosses")
 ax.set_title('Power of Coin Flip')
-plt.show()
 plt.savefig("heatmap.png")
-        
+
+
+fig, ax = plt.subplots()
+# ax= sns.heatmap(power2b)
+sns.heatmap(power2, cmap="YlGnBu", ax=ax)
+ax.set_xlabel("probability")
+ax.set_ylabel("tosses")
+ax.set_title('Power of Coin Flip')
+plt.savefig("wheatmap.png")       
 ### 
