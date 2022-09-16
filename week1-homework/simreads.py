@@ -45,7 +45,7 @@ ax.plot(x, y, label= "poisson") #add labels
 ax.set_xlabel('number of reads')
 ax.set_ylabel('coverage of reads')
 ax.legend()
-ax.set_title("1s5x coverage for 1Mbp of 100bp reads")
+ax.set_title("15x coverage for 1Mbp of 100bp reads")
 plt.show() 
        
     
