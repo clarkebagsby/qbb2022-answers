@@ -9,7 +9,7 @@ Question 1-
 
 1.3 7123 --> bp that has not been sequenced
 
-
+----
 Question 2-
 code ran, downloaded spades:
 
@@ -20,15 +20,22 @@ code ran, downloaded spades:
 2.3 	105830	
 2.4 total of number divided by the smallest amount: 117, 233.5
 
+----
+
 Question 3-
 
 3.1 AvgIdentity =  99.9823              99.9823
 3.2 
 3.3 1 insertions, 2 deletions
 
+----
+
 Question 4- 
+
 4.1 26787 between 27500
+
 4.2 713
+
 4.3 
 ">NODE_1_length_234497_cov_20.506978:26787-27500
 CCGCCCATGCGTAGGGGCTTCTTTAATTACTTGATTGACGCATGCCCCTCGTTCTACATG
@@ -43,10 +50,11 @@ GAGGATTTCCTGCCTTGCCGAACACCTTACGTCATTCGGGGATGTCATAAAGCCAAACTT
 AGGCAAGTAGAAGATGGAGCACGGTCTAAAGGATTAAAGTCCTCGAATAACAAAGGACTG
 GAGTGCCTCAGGCATCTCTGCCGATCTGATTGCAAGAAAAAATGACAATATTAGTAAATT
 AGCCTATGAATAGCGGCTTTAAGTTAATGCCGAGGTCAATATTGACATCGGTAG"
+
 4.4 
 python asm/dna-decode.py -d --input dnamsg1.fasta
 samtools faidx scaffolds.fasta NODE_1_length_234497_cov_20.506978:26788-27499 > dnamsg1.fasta
-Congratulations to the 2021 CMDB @ JHU class!  Keep on looking for little green aliens...
+Congratulations to the 2022 CMDB @ JHU class!  Keep on looking for little green aliens...
 
 
 
