@@ -25,7 +25,7 @@ code ran, downloaded spades:
 Question 3-
 
 3.1 AvgIdentity =  99.9823              99.9823
-3.2 
+3.2 116896.0000 
 3.3 1 insertions, 2 deletions
 
 ----
