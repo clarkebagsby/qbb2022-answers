@@ -19,11 +19,12 @@ plt.hist(genome_reads_complete, label = "Distribution") #add labels
 x = np.arange(0, 25, 1)
 y = poisson.pmf(x, 5)*1000000 #gives distribution of the 1 million reads (tells how many reads possible )
 ax.plot(x, y, label= "poisson") #add labels
-ax.set_xlabel('number of reads')
-ax.set_ylabel('coverage of reads')
+ax.set_xlabel('covergae of reads')
+ax.set_ylabel('frequencies')
 ax.legend()
 ax.set_title("5x coverage for 1Mbp of 100bp reads")
 plt.show()
+plt.savefig("wk1_a.png")
 
 # this reads the amount not covered
 # non_reads =[]
@@ -33,7 +34,7 @@ plt.show()
 # print(len(non_reads))
 
 # how it matches the poisson distribution
-matches = poisson.pmf(x, 5)*100000
+matches = poisson.pmf(x, 15)*100000
 print(matches)  #gives the amount of reads for a bin that are not covered, the possibilities of the coverage area 
 
 #for 15X coverage 
@@ -47,6 +48,7 @@ ax.set_ylabel('coverage of reads')
 ax.legend()
 ax.set_title("15x coverage for 1Mbp of 100bp reads")
 plt.show() 
+plt.savefig("wk1_b.png")
        
     
         
