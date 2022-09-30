@@ -84,8 +84,10 @@ while trace_m[i][j] != 'e':
 rev_seq1 = tot_seq1[::-1]
 rev_seq2 = tot_seq2[::-1]
 
+
+
 actseq = open(file_path, 'w')
-actseq.write(tot_seq1)
-actseq.write(tot_seq2)
+actseq.write("SEQUENCE 1:" + rev_seq1)
+actseq.write("SEQUENCE 2:" + rev_seq2)
 actseq.close()
 
