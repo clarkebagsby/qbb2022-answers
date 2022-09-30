@@ -87,6 +87,7 @@ ax.set_title("Allele Frequency")
 # plt.xlim([0, 400])
 plt.savefig("wk3_c.png")
 plt.close()
+
 # # A summary of the predicted effect(s) of each variant as determined by snpEff (barplot)
 
 #
