@@ -89,7 +89,7 @@ final = open("test.vcf", "r")
 # plt.close()
 
 # # A summary of the predicted effect(s) of each variant as determined by snpEff (barplot)
-ann_list = []
+ann_list = {}
 n_bins = 500
 
 fig, ax = plt.subplots()
@@ -104,16 +104,21 @@ for line in final:
     ann2 = ann_info[41]
 
     ann4 = ann2.split(",")
-    ann5 = ann4[0] # gives the DP=
-    act_ann = ann5[4:5] # give the number
-    ann_list.append(str(act_ann))
+    ann5 = ann4[0] # gives the ANN=C line
+    act_ann = ann5.split('|')
+    ann_list.setdefault(act_ann[1], 1)
+    ann_list[act_ann[1]] += 1
 
-ax.bar(ann_list)
-# ax.set_xlabel("")
-# ax.set_ylabel("")
-# ax.set_title("")
+
+    # ann_list.append(str(act_ann))
+#
+ax.bar(ann_list.keys(), ann_list.values())
+ax.set_xlabel("variant types")
+plt.xticks(rotation = 45)
+ax.set_ylabel("occurence in variants")
+ax.set_title("The Number of Predicted Variants Occuring")
 plt.savefig("wk3_d.png")
-plt.show()
+plt.close()
 #
 #
 
