@@ -106,7 +106,7 @@ for line in final:
     ann4 = ann2.split(",")
     ann5 = ann4[0] # gives the ANN=C line
     act_ann = ann5.split('|')
-    ann_list.setdefault(act_ann[1], 1)
+    ann_list.setdefault(act_ann[1], 1) # initializing the dictionary, with on, if key not already there, adds it and adds value of 1, if key is there, then skip, used to keep count, which is why set 1 is used
     ann_list[act_ann[1]] += 1
 
 
