@@ -19,7 +19,7 @@ ax[0].fill_between(D0_H3K27ac['X'], D0_H3K27ac["Y"])
 ax[1].fill_between(D2_H3K27ac['X'], D2_H3K27ac["Y"])
 ax[2].fill_between(R2_tc['X'], R2_tc["Y"])
 ax[3].fill_between(R1_tc['X'], R1_tc["Y"])
-plt.savefig("wk5_a.pdf")
+plt.savefig("wk5_a.png")
 
 
 
