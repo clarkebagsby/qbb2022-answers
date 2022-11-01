@@ -63,43 +63,43 @@ maf = np.genfromtxt("plink.frq", dtype = None, encoding = None, skip_header = 1,
 #
 # #question 6 : take from genotype.vcf and CB... file
 #
-# linear = open("final_results_test.assoc.linear", 'r')
-# genotypes = open('genotypes.vcf', 'r')
-# pval =[]
-# snp = []
-# for line in linear:
-#     if line == 0:
-#         continue
-#     line = line.split()
-#     if line[4] == "ADD":
-#        pval.append(float(line[8]))
-#        snp.append(line[1])
-# low_pval = min(pval)
-# index_p = pval.index(low_pval) # gets the associated p val
-# assoc_snp = snp[index_p] # gets the associated snp
-#
+linear = open("final_results_test.assoc.linear", 'r')
+genotypes = open('genotypes.vcf', 'r')
+pval =[]
+snp = []
+for line in linear:
+    if line == 0:
+        continue
+    line = line.split()
+    if line[4] == "ADD":
+       pval.append(float(line[8]))
+       snp.append(line[1])
+low_pval = min(pval)
+index_p = pval.index(low_pval) # gets the associated p val
+assoc_snp = snp[index_p] # gets the associated snp
+
 # # match the snp to genotype file
 # # in genotype, need to match the SNP ID to the line in ID and pull out the genotype data(the )
 # # dictionary 1, from genotypes, key= individual, value = genotype info (0/0)
 # # search through phenotypes by the individual #, by keys, then get the value for phenotype and put into list
 # # graph: x-axis will have the different genotypes(0/0,0/1,1/1) y axis will have
-#
-# id_genotype = {}
-# indviduals = []
-# homogenous =[] #1/1
-# heterozygous = [] #0/1
-# zero = [] #
-# for line in genotypes:
-#     if line.startswith('##'):
-#         continue
-#     line2 = line.split()
-#     if line2[0] == '#CHROM':
-#         for i in line2[9:]:
-#             id_genotype[i] = "" #initializing the dictionary with empty string so we could later add in that value
-#     act_g = line2[9:] #['1/1', '0/1', './.', '0/0', '0/1', '0/1', '0/1',
-#     for i in act_g:
-#         id_genotype[i] += act_g
-# print(id_genotype)
+
+id_genotype = {}
+indviduals = []
+homogenous =[] #1/1
+heterozygous = [] #0/1
+zero = [] #
+for line in genotypes:
+    if line.startswith('##'):
+        continue
+    line2 = line.split()
+    if line2[0] == '#CHROM':
+        for i in line2[9:]:
+            id_genotype[i] = "" #initializing the dictionary with empty string so we could later add in that value
+    act_g = line2[9:] #['1/1', '0/1', './.', '0/0', '0/1', '0/1', '0/1',
+    for i in act_g:
+        id_genotype[i] += act_g
+print(id_genotype)
         
         
 ## Disregard...       
