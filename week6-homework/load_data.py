@@ -41,7 +41,7 @@ def main():
         ('chr', 'S5'), ('start', int), ('end', int), ('bin', int)]))
     frags_40kb = np.loadtxt(infname_40kb_bins, dtype=np.dtype([
         ('chr', 'S5'), ('start', int), ('end', int), ('bin', int)]))
-    
+    print(frags_40kb)
 
     chrom = b'chr15'
     chrom_40kb = b'chr15'
@@ -65,7 +65,8 @@ def main():
     end40kb_bin = frags_40kb['bin'][np.where((frags_40kb['chr'] == chrom_40kb) &
                                        (frags_40kb['start'] <= end_40kb) &
                                        (frags_40kb['end'] > end_40kb))[0][0]] + 1
-
+    print(start40kb_bin)
+    print(end40kb_bin)
 # filter the data1/2 frames by the start_bin and end_bin
 
     data1_new = data1[np.where((data1["F1"] >= start_bin) & (data1["F2"] < end_bin))]
@@ -87,7 +88,7 @@ def main():
 
 # # make matrix with mat[sparse['F1'][i], sparse['F2'][i]] = sparse['score'][i]
     axis_length = end_bin - start_bin # this gives the axises
-
+    
 
     heatmap_matrix = np.zeros((axis_length, axis_length))
 
@@ -118,7 +119,6 @@ def main():
     test = smooth_2 - smooth_1
 
     ax[2].imshow(test, vmax=np.max(test), cmap = "seismic")
-    plt.show()
     plt.savefig("wk6.png")
 
 # #insulation scores
@@ -128,16 +128,15 @@ def main():
 
 # #log transform the above
     data_40kb_data['score'] = np.log(data_40kb_data['score'])
-    print(data_40kb_data)
+    
 
 # #making matrix 
     insulator_axis = end40kb_bin - start40kb_bin # this gives the axises
-
+    print(insulator_axis)
 
     insulator_matrix = np.zeros((insulator_axis, insulator_axis))
-
-    insulator_matrix[data_40kb_data['F1'] - start40kb_bin, data1_new['F2'] - start_bin] = data1_new['score'] #forward
-    insulator_matrix[data_40kb_data['F2'] - start40kb_bin, data1_new['F1'] - start_bin] = data1_new['score'] #reverse
+    insulator_matrix[data_40kb_data['F1'] - start40kb_bin, data_40kb_data['F2'] - start40kb_bin] = data_40kb_data['score'] #
+    
 
 
 
