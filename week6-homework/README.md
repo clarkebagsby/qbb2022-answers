@@ -18,24 +18,20 @@ tar -xzvf 3dgenome_data.tar.gz
 ~ dangly ends that did not have a complementary pair to ligate to.
 
 # Part 2:Code 
-CLARKE: use the data in analysis/hic_results/matrix/dCTCF\ddCTCF 
-~/qbb2022-answers/week6-homework/analysis/hic_results/matrix/dCTCF/iced --> input data in dCTCF_ontarget_6400_iced.matrix
 
+command for the sub-sampled 6400 res:
 python load_data.py /Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/dCTCF/iced/6400/dCTCF_ontarget_6400_iced.matrix /Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/ddCTCF/iced/6400/ddCTCF_ontarget_6400_iced.matrix /Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/dCTCF/raw/6400/dCTCF_ontarget_6400_abs.bed filtered1.png
 
-for insulation scores : in ~/qbb2022-answers/week6-homework/3dgenome_data/matrix/dCTCF_full.40000.matrix and ~/qbb2022-answers/week6-homework/3dgenome_data/matrix/40000_bins.bed
+load_data script contains the updated script for subsampled and the full data !
+~ yes, the highlighted difference refers to shifting of the data from ddCTCF and dCTCF
+~ were able to see the difference between interactions amoung different locuses 
+~ the highlighted signal indicates the insulator interactions with enhancer regions, with a CTCF site you see less of the transcripts
 
-
-python load_data.py /Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/ddCTCF/iced/6400/ddCTCF_ontarget_6400_iced.matrix
- /Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/dCTCF/iced/6400/dCTCF_ontarget_6400_iced.matrix /Users/cmdb/qbb2022-answers/week6-homework/3dgenome_data/matrix/dCTCF_full.40000.matrix  /Users/cmdb/qbb2022-answers/week6-homework/3dgenome_data/matrix/40000_bins.bed
-/Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/dCTCF/raw/6400/dCTCF_ontarget_6400_abs.bed filtered1.png
-
- 
+command for insulation 4000 res:
 python load_data.py /Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/ddCTCF/iced/6400/ddCTCF_ontarget_6400_iced.matrix /Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/dCTCF/iced/6400/dCTCF_ontarget_6400_iced.matrix /Users/cmdb/qbb2022-answers/week6-homework/3dgenome_data/matrix/dCTCF_full.40000.matrix 
-/Users/cmdb/qbb2022-answers/week6-homework/3dgenome_data/matrix/40000_bins.bed /Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/dCTCF/raw/6400/dCTCF_ontarget_6400_abs.bed 
-almost.png
+/Users/cmdb/qbb2022-answers/week6-homework/3dgenome_data/matrix/40000_bins.bed /Users/cmdb/qbb2022-answers/week6-homework/analysis/hic_results/matrix/dCTCF/raw/6400/dCTCF_ontarget_6400_abs.bed almost.png
 
-
+forgot to do full data will add tomorrow!
 
 
 
