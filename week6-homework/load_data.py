@@ -41,7 +41,7 @@ def main():
         ('chr', 'S5'), ('start', int), ('end', int), ('bin', int)]))
     frags_40kb = np.loadtxt(infname_40kb_bins, dtype=np.dtype([
         ('chr', 'S5'), ('start', int), ('end', int), ('bin', int)]))
-    print(frags_40kb)
+    
 
     chrom = b'chr15'
     chrom_40kb = b'chr15'
@@ -59,14 +59,8 @@ def main():
                                        (frags['start'] <= end) &
                                        (frags['end'] > end))[0][0]] + 1
 
-    start40kb_bin = frags_40kb['bin'][np.where((frags_40kb['chr'] == chrom_40kb) &
-                                         (frags_40kb['start'] <= start_40kb) &
-                                         (frags_40kb['end'] > start_40kb))[0][0]]
-    end40kb_bin = frags_40kb['bin'][np.where((frags_40kb['chr'] == chrom_40kb) &
-                                       (frags_40kb['start'] <= end_40kb) &
-                                       (frags_40kb['end'] > end_40kb))[0][0]] + 1
-    print(start40kb_bin)
-    print(end40kb_bin)
+    
+    
 # filter the data1/2 frames by the start_bin and end_bin
 
     data1_new = data1[np.where((data1["F1"] >= start_bin) & (data1["F2"] < end_bin))]
@@ -129,31 +123,47 @@ def main():
 # #log transform the above
     data_40kb_data['score'] = np.log(data_40kb_data['score'])
     
-
-# #making matrix 
-    insulator_axis = end40kb_bin - start40kb_bin # this gives the axises
-    print(insulator_axis)
-
-    insulator_matrix = np.zeros((insulator_axis, insulator_axis))
-    insulator_matrix[data_40kb_data['F1'] - start40kb_bin, data_40kb_data['F2'] - start40kb_bin] = data_40kb_data['score'] #
+# finding minimum score and subtracting from the all the scores
+    # insulator_40kb_min = np.min(data_40kb_data) #doesnt work
+    # insulator_40kb_min1 = np.min(data_40kb_data['score']) #doesnt work
+    insulator_40kb_min2 = np.argmin(data_40kb_data['score'])
+    test = data_40kb_data['score'][42] # how do i use the argmin to return the value?
+    data_40kb_data['score'] = data_40kb_data['score'] - test
     
 
+# making matrix 
+    insulator_axis = end_40kb - start_40kb # this gives the axises
 
+    insulator_matrix = np.zeros((insulator_axis, insulator_axis))
+    
+    insulator_matrix[data_40kb_data['F1'] - start_40kb, data_40kb_data['F2'] - start_40kb] = data_40kb_data['score'] #forward
+    insulator_matrix[data_40kb_data['F2'] - start_40kb, data_40kb_data['F1'] - start_40kb] = data_40kb_data['score']
+# take mean of the matrix
 
+    insulation_scores = []
+    for i in range(5, insulator_axis - 4):
+        insulation_scores.append(np.mean(insulator_matrix[(i - 5):i, i:(i + 5)]))
+    final = np.linspace(10400000, 13400000, len(insulation_scores))
+# finally make the heat map
+    
+    fig, ax = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, figsize=(5,6.25))
+    ax[0].axis('off')
+    plt.margins(x=0)
+    ax[1].set_xlim(10400000, 13400000)
+    plt.subplots_adjust(left=0.15,
+                    bottom=0.1,
+                    right=1.0,
+                    top=1.0,
+                    wspace=0.4,
+                    hspace=0.0)
+    ax[0].imshow(insulator_matrix, cmap= 'magma')
+    ax[1].plot(final, insulation_scores)
+    plt.tight_layout()
+    plt.savefig('wk6_insulation.png')
+    plt.show()
+    
+        
 
-#
-# insulation_matrix[data1_length['F1'] - new_start_bin, data1_length['F2'] - new_start_bin] = data1_new['score'] #forward
-# insulation_matrix[data1_length['F2'] - new_start_bin, data1_length['F1'] - new_start_bin] = data1_new['score'] #reverse
-
-# for i iin range(5, lenght-4):
-
-
-# #use heatmap code from above to make another
-# #input code from homework
-#
-#
-#
-#
 
 if __name__ == "__main__":
     main()
