@@ -43,4 +43,4 @@ part 5: codes are in the assignment,
 
 part 6: answer
 Do you expect each region in H1 or H2 to correspond to the same parent of origin (i.e. the same haplotype)? Explain your reasoning.
-yes, ...
+yes, because genomic imprinting invovles the same parent of origin, but whats different is the epigentic marks present. For one haplotype in males or females, there might a differential gene expression pattern depending upon sex that might be passed down to daughter cells. 
