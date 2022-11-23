@@ -4,6 +4,7 @@ Question 1-
 
 1.1 How many 100bp reads are needed to sequence a 1Mbp genome to 5x coverage? How many are needed for 15x coverage?/
 1,000,000 *5 = 500000/100= 50,000 -100bp reads
+1,000,000 *15 = 15000000/100= 150,000 -100bp reads
 
 1.2 code in simreads.py
 
