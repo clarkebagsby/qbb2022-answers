@@ -4,7 +4,7 @@
 
 
 #question 2 code 
-plink --vcf genotypes.vcf --pca 10 # writes it to plink.eigenvec USE THSI ONE
+plink --vcf genotypes.vcf --pca 10 
 
 #question3 code 
 plink --vcf genotypes.vcf --freq  # writes it to plink.frq
