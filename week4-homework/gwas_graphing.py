@@ -95,11 +95,13 @@ for line in genotypes:
     line2 = line.split()
     if line2[0] == '#CHROM':
         for i in line2[9:]:
-            id_genotype[i] = "" #initializing the dictionary with empty string so we could later add in that value
+            id_genotype[i] = i #initializing the dictionary with empty string so we could later add in that value
     act_g = line2[9:] #['1/1', '0/1', './.', '0/0', '0/1', '0/1', '0/1',
-    for i in act_g:
-        id_genotype[i] += act_g
+    id_genotype[i] = act_g
+    # for j in act_g:
+#         id_genotype[i] += j
 print(id_genotype)
+print(act_g)
         
         
 ## Disregard...       
