@@ -6,8 +6,9 @@ import numpy.lib.recfunctions as rfn
 from scipy.cluster.hierarchy import linkage, leaves_list, dendrogram
 from statsmodels.formula.api import ols
 from statsmodels.api import qqplot
-# from statsmodels.graphics.gofplots import qqplot
 from statsmodels.stats.multitest import multipletests
+import pandas as pd
+
 
 
 
@@ -102,25 +103,38 @@ plt.savefig('qqplot for stages')
 
 mut_tests = multipletests(arr_p_values, method='fdr_bh', alpha=0.1) #need to filter the first index
 
-
-
 comp_1 = mut_tests[0] #array with the boolean values
 arr_comp = np.array(comp_1)
 arr_transcripts = np.array(filtered_genes)
-
-print(np.sum(comp_1), flush=True)
-
-# print(comp_1)
-
-
 diff_exp_trans = arr_transcripts[arr_comp]
 
-print(diff_exp_trans)
+np.savetxt('diff_exp_transcripts.txt', diff_exp_trans,fmt="%s",delimiter=',')
+
+mut_tests_sex = multipletests(arr_p_values_sex, method='fdr_bh', alpha=0.1) #need to filter the first index
+
+comp_2 = mut_tests_sex[0] #array with the boolean values
+arr_comp_sex = np.array(comp_2)
+arr_transcripts_sex = np.array(filtered_genes)
+diff_exp_trans_sex = arr_transcripts[arr_comp_sex]
+
+np.savetxt('diff_exp_transcripts_sex.txt', diff_exp_trans_sex,fmt="%s",delimiter=',')
+
+# this is going to save p_values to a txt file 
+
+np.savetxt('p_values.txt', p_values)
+
+np.savetxt('beta_values.txt', beta_values)
+
+https://medium.com/omics-diary/building-volcano-plots-with-plotly-for-quantitative-analysis-of-omics-data-74e36f4cb8f8 # volcano plot info
+
+# read_file = pd.read_csv (r'diff_exp_transcripts.txt')
+# read_file.to_csv (r'diff_exp_transcripts.csv', index=None)
+#
+# df = pd.read_csv('diff_exp_transcripts.csv')
 
 
 
 
-idk2 = multipletests(arr_p_values_sex, method= 'fdr_bh')
-# print(idk2)
 
-# no qqplot for sex  one
+
+
