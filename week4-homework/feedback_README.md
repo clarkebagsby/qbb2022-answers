@@ -6,3 +6,12 @@ Plots look great! That being said, we need you to upload a few more things:
 4. Your answer for Part 7 (-1 point)
 
 (4/10)
+
+**Regrade KW**
+
+1. Commands are present +1.5
+2. Plotting code is present +2.5
+3. No boxplot
+4. No part 7 answer
+
+(8/10)
