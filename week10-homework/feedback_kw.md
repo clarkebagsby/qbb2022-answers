@@ -23,6 +23,7 @@
   * Plot (0.5 point)
 
 ### Grade
+
 0.5 + 2 + 0.5 + 2 + 1 + 1 + 1.5  --> 8.5/10
 
 I see the code for the later steps, but not the plots themselves. If you upload the support plots and then the labeled umap (labeling the clusters by proposed cell type), you should get full points.
