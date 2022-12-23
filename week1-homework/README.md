@@ -16,10 +16,12 @@ code ran, downloaded spades:
 
 ~/SPAdes-3.15.5-Darwin/bin/spades.py --pe-1 1 ./frag180.1.fq copy --pe-2 2 ./frag180.2.fq copy --mp-1 1 ./jump2k.1.fq copy --mp-2 2 jump2k.2.fq copy -t 4 -k 31 -o asm
 
-2.1 4 
-2.2 want to index each contig, seperate heaer, get length of sequence by samtools -n ; 105830 + 47860 + 41351 + 39426
-2.3 	105830	
+2.1 4;grep -c '>' contigs.fasta; samtools faidx contigs.fasta
+
+2.2 want to index each contig, seperate heaer, get length of sequence by samtools -n ; 105830 + 47860 + 41351 + 39426; awk '{sum+=$2} END {print sum}' "contigs.fasta.fai"
+2.3 105830; cut -f2 contigs.fasta.fai | sort -n -r | head -1
 2.4 total of number divided by the smallest amount: 117, 233.5
+
 
 ----
 
