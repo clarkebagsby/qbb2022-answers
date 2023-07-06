@@ -4,16 +4,15 @@ adata = sc.read_10x_h5("neuron_10k_v3_filtered_feature_bc_matrix.h5")
 # Make variable names (in this case the genes) unique
 adata.var_names_make_unique()
 
-
 # no filter
 sc.tl.pca(adata)
 sc.pl.pca(adata)
 
-#filter the adata by this recipe
+# #filter the adata by this recipe
 sc.pp.recipe_zheng17(adata)
-# performing pca on the filtered data
+# # performing pca on the filtered data
 sc.tl.pca(adata)
-# making a plot with the PCA adata
+# # making a plot with the PCA adata
 sc.pl.pca(adata)
 
 #making neighborhood graph
@@ -26,41 +25,61 @@ sc.pl.tsne(adata)
 
 sc.tl.umap(adata, maxiter=1000)
 sc.pl.umap(adata)
-
+#leiden gives a certain number of groups the genes fall inti 
 sc.tl.rank_genes_groups(adata, groupby='leiden', method='t-test')
 sc.pl.rank_genes_groups(adata)
 
 sc.tl.rank_genes_groups(adata, groupby='leiden', method='logreg')
 sc.pl.rank_genes_groups(adata)
 
-#PC Pericytes, aaSMC arteriolar SMC, MG Microglia, EC1 EpithelialC type 1, vEC venous EC, AC Astrocyte --> cell types picked
-marker_genes = ['F13a1','CD86','Ccl8','Neurl3','Pf4','Tagap']
-    
-    
-for i in range(0, len(marker_genes)):
-    sc.tl.tsne(adata)
-    sc.pl.tsne(adata, color=marker_genes[i]) #not sure why this isnt doing for each one of the indexes
 
 
-# marker_genes_2 = {'PC': 'F13a1', 'aaSMC':'CD86', 'MG': "Ccl8", 'EC1': 'IGfbpl1', 'vEC': 'Pf4', 'AC': 'Tagap'}
-#
-# sc.pl.dotplot(adata, marker_genes_2, 'leiden')
+#support plot
+sc.pl.tsne(adata, color=['Hba-a1', 'Gad1', 'Gad2', 'Hes1', 'Pax6', 'Meg3'], legend_loc='right margin')
+sc.pl.tsne(adata, color='leiden', legend_loc='right margin')
 
-# sc.pl.matrixplot(adata, marker_genes_2, 'leiden', dendrogram=True, cmap='Blues', standard_scale='var', colorbar_title='column scaled\nexpression')
 
+
+# Gad1,2 cell type GABAergic neurons
+# Hes1 cell type progenitor neurons
+#Pax6 cell type astrocytes
+#Meg3 cell type multipolar neurons 
+#Hba-a1 cell type erythocytes
+
+        
 clusters = {
-     '21': 'PC',
+     '0': 'Gad1-GABAergic neurons',
+     '1': '',
+     '2': '',
+     '3': 'Pax6-astrocytes',
      '4': 'aaSMC',
-     '10': 'MG',
-     '39': 'EC1',
-     '22': 'vEC',
-     '15': 'AC'
+     '5': '',
+     '6': 'Meg3-multipolar neurons',
+     '7': '',
+     '8': '',
+     '9': '',
+     '10': '',
+     '11': 'Hes1-progentior neurons',
+     '12': '',
+     '13': '',
+     '14': '',
+     '15': '',
+     '16': '',
+     '17': '',
+     '18': '',
+     '19': 'Hba19-erythocytes',
+     '20': '',
+     '21': '',
+     '22': '',
+     '23': '',
+
 }
 
 adata.obs['celltypes'] = adata.obs['leiden'].map(clusters).astype('category')
 
-sc.pl.umap(adata, color='celltypes', legend_loc='on data',
+sc.pl.tsne(adata, color='celltypes', legend_loc='on data',
            frameon=False, legend_fontsize=10, legend_fontoutline=2,
            save='cell_types.png', show=True)
+
 
 
