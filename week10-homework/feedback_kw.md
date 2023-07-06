@@ -27,3 +27,13 @@
 0.5 + 2 + 0.5 + 2 + 1 + 1 + 1.5  --> 8.5/10
 
 I see the code for the later steps, but not the plots themselves. If you upload the support plots and then the labeled umap (labeling the clusters by proposed cell type), you should get full points.
+
+
+### Regrade
+
+Looks like you added both of the things Kate asked for! Nice work :D
+I will note that it's not immediately clear to me how the code matches up with each of your output plots (not just the new plots, also the old plots). I suspect you had Python "show" the figures, and then save them, which is generally okay, but it makes it harder to know which bit of code made which plot. Better to use the `save` argument in `sc.pl.tsne()` or `sc.pl.umap()`, to tell it to save to a specific file
+
+(10/10)
+
+Dylan
