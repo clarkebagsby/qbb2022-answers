@@ -8,6 +8,8 @@ from statsmodels.formula.api import ols
 from statsmodels.api import qqplot
 from statsmodels.stats.multitest import multipletests
 import pandas as pd
+from scipy import stats
+
 
 
 
@@ -98,7 +100,7 @@ for i in range(extra_filtered_fpkm.shape[0]):
 arr_p_values = np.array(p_values)
 arr_p_values_sex = np.array(p_values_sex)
 
-qqplot(arr_p_values, line='q')
+qqplot(arr_p_values, dist = stats.distributions.uniform, line='q')
 plt.savefig('qqplot for stages')
 
 mut_tests = multipletests(arr_p_values, method='fdr_bh', alpha=0.1) #need to filter the first index
@@ -125,7 +127,35 @@ np.savetxt('p_values.txt', p_values)
 
 np.savetxt('beta_values.txt', beta_values)
 
-https://medium.com/omics-diary/building-volcano-plots-with-plotly-for-quantitative-analysis-of-omics-data-74e36f4cb8f8 # volcano plot info
+# print(p_values)
+# print(beta_values)
+logpvals = (np.log10(p_values))* -1
+# print(max(logpvals))
+
+colors_v = []
+for i in mut_tests_sex[0]:
+    if i == False:
+        colors_v.append('purple')
+    else:
+        colors_v.append('yellow')
+        
+
+fig, ax = plt.subplots()
+plt.scatter(beta_values, logpvals, c = colors_v)
+plt.xlabel('Beta values')
+plt.ylabel('log10 p-values')
+plt.title('Drosphila Differently Expressed Genes Among Sex')
+plt.savefig('Volcano_Plot.png')
+plt.show()
+
+
+        
+
+# print(len(logpvals))
+# print(len(beta_values))
+# print(mut_tests_sex)
+# print(mut_tests)
+# https://medium.com/omics-diary/building-volcano-plots-with-plotly-for-quantitative-analysis-of-omics-data-74e36f4cb8f8 # volcano plot info
 
 # read_file = pd.read_csv (r'diff_exp_transcripts.txt')
 # read_file.to_csv (r'diff_exp_transcripts.csv', index=None)
