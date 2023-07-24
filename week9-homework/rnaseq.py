@@ -127,9 +127,14 @@ np.savetxt('p_values.txt', p_values)
 
 np.savetxt('beta_values.txt', beta_values)
 
+np.savetxt('p_values_sex.txt', p_values_sex)
+
+np.savetxt('beta_values_sex.txt', beta_values_sex)
+
 # print(p_values)
 # print(beta_values)
 logpvals = (np.log10(p_values))* -1
+logpvals_sex = (np.log10(p_values_sex))* -1
 # print(max(logpvals))
 
 colors_v = []
@@ -141,10 +146,10 @@ for i in mut_tests_sex[0]:
         
 
 fig, ax = plt.subplots()
-plt.scatter(beta_values, logpvals, c = colors_v)
+plt.scatter(beta_values_sex, logpvals_sex, c = colors_v)
 plt.xlabel('Beta values')
 plt.ylabel('log10 p-values')
-plt.title('Drosphila Differently Expressed Genes Among Sex')
+plt.title('Drosphila Differently Expressed Genes With Sex As a Covariate')
 plt.savefig('Volcano_Plot.png')
 plt.show()
 

@@ -15,6 +15,7 @@ yes, we do want it to compare to a normal distribution but the distribution shou
 2.5 Answer: list in diff_exp_transcripts_sex.txt
 
 2.6 Answer: 92.28177641653905 = ((3013 / 3265) * 100)
+			7.718223583 = (((3013-3265)/ 3265) * 100) 
 
 
 
