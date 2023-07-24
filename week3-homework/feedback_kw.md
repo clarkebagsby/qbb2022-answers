@@ -46,3 +46,10 @@
 10. 1000 line vcf
 
   * I don't see the vcf file. Did you do `git add --force <your.vcf>`?
+
+
+REGRADE 07-24-2023 Dylan
+
+Looks like you addressed all of Kate's concerns!
+
+(10/10)
