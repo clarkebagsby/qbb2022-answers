@@ -7,9 +7,12 @@ from fasta import readFASTA
 input_sequences = readFASTA(open(sys.argv[1])) # this allows for inout arguments <CCTCF_38_M27_AA.faa> <scoring_matrix> <-2> <
 scoring_matrix = (sys.argv[2])
 penalty_gaps = float(sys.argv[3])
+if penalty_gaps >= 0:
+    penalty_gaps = -1 * penalty_gaps
 file_path = sys.argv[4]
+# python needwunscript.py CTCF_38_M27_AA.faa BLOSUM62.txt 10 testaa.txt
+# python needwunscript.py CTCF_38_M27_DNA.fna HOXD70.txt 300 testdna.txt
 
- 
 seq1_id, sequence1 = input_sequences[0]
 seq2_id, sequence2 = input_sequences[1]
 # print(seq1_id, sequence1)
@@ -58,10 +61,12 @@ for i in range(1, len(sequence1)+1): # loop through rows
             trace_m[i,j] = "h"
         else:
             trace_m[i,j] = 'v'
-
+print('Alignment score: ' + str(N_matrix[i,j]))
 
 tot_seq1 = ""
 tot_seq2 = ""
+gap_count1 = 0
+gap_count2 = 0
 
 i = len(sequence1)
 j = len(sequence2)
@@ -70,6 +75,7 @@ while trace_m[i][j] != 'e':
     if trace_m[i][j] == 'h': # if the index at this posiiton is h then go to the left and make a dash for the mismatch in x positioon
         tot_seq1 += '-'
         tot_seq2 += sequence2[j-1]
+        gap_count1 += 1
         j -=1
     elif trace_m[i][j] == "d": # if the index is at this position
         tot_seq1 += sequence1[i-1]
@@ -79,6 +85,7 @@ while trace_m[i][j] != 'e':
     elif trace_m[i][j] == "v":
         tot_seq1 += sequence1[i-1]
         tot_seq2 += '-'
+        gap_count2 += 1
         i -= 1
 
 rev_seq1 = tot_seq1[::-1]
@@ -87,7 +94,10 @@ rev_seq2 = tot_seq2[::-1]
 
 
 actseq = open(file_path, 'w')
-actseq.write("SEQUENCE 1:" + rev_seq1)
+actseq.write("SEQUENCE 1:" + rev_seq1 + '\n' + '\n')
 actseq.write("SEQUENCE 2:" + rev_seq2)
 actseq.close()
+
+print('Gaps in sequence 1: ' + str(gap_count1))
+print('Gaps in sequence 2: ' + str(gap_count2))
 
