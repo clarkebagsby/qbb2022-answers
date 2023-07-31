@@ -7,3 +7,10 @@ More importantly, something is going on with your DNA alignment, given your outp
 You need to have your code print out statistics about the alignment (number of gaps in each sequence, and the alignment score). Make sure to upload this (for each alignment) in a README file (-1 point)
 
 8.5/10
+
+
+REGRADE 07-31-2023 Dylan
+
+Great work! You've addressed all of my previous feedback; everything looks great
+
+(10/10)
